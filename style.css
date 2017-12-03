@@ -1,0 +1,151 @@
+/* Navigation menu */
+
+.navigation__background{
+    height: 6rem;
+    width:6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(rgba(9, 161, 249), rgba(7, 93, 142));
+    z-index: 1000;
+    transition: transform .8s;
+        
+}
+
+.navigation__button{
+    background-color: white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba(#000, .1);
+    text-align: center;
+    cursor: pointer;
+    
+}
+.navigation__checkbox{
+    display: none;
+}
+.navigation__nav{
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1500;
+    opacity: 0;
+    transition: all .6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navigation__list{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    list-style: none;
+    text-align: center;
+    width: 100%;
+}
+.navigation__item{
+  margin: 2rem;
+}
+.navigation__link:link,
+.navigation__link:visited
+{
+    display: inline-block;
+   font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+    background-size: 230%;
+    transition: .4s;
+}
+.navigation__link:hover,
+.navigation__link:active
+{
+    background-position: 100%;
+    color: rgba(9, 161, 249);
+    transform: translateX(1rem);
+}
+
+.navigation__checkbox:checked ~ .navigation__background{
+    transform: scale(80);
+}
+
+.navigation__checkbox:checked ~ .navigation__nav{
+    
+    opacity: 1;
+    width: 100%;
+}
+.navigation__icon,
+.navigation__icon::before,
+.navigation__icon::after
+{
+    width: 4rem;
+    height: 4px;
+    background-color: darkgray;
+    display: inline-block;
+}
+
+
+/* zeby elementy before i after mogly byc wyswietlone trzeba napisas zawartosc tych klas (content)*/
+
+.navigation__icon::before,
+.navigation__icon::after
+{
+   content:"";
+   position: absolute;
+    left: 0;
+    transition: all .4s;
+}
+.navigation__icon::before{
+    top: -1rem;
+    
+}
+.navigation__icon::after
+{
+    top: 1rem;
+}
+.navigation__icon{
+    position: relative;
+    margin-top: 3.5rem;
+}
+
+
+
+.navigation__button:hover .navigation__icon::before,
+{
+    top: -1.2rem;
+}
+
+
+
+.navigation__button:hover .navigation__icon::after,
+{
+
+    top: 1.2rem;
+}
+
+/* klick */
+/* polecenia ktore beda sie odbywaly po klinknieciu przycisku menu */
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon{
+    background-color: transparent;
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before{
+    top: 0;
+    transform: rotate(45deg);
+    
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after{
+    top: 0;
+    transform: rotate(-45deg);
+    
+}
